@@ -31,7 +31,7 @@ public class Bitwise{
   
   public String ObtenerTodo(){
     String cadena = "x = ";
-    for (int i = 20;i>=1;i--){
+    for (int i = 32;i>=1;i--){
       cadena = cadena + GetBit(i) + " ";
     }
     return cadena;

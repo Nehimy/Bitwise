@@ -28,6 +28,8 @@ public class VentanaBitwise{
   private JButton Encender;
   private JButton Apagar;
   
+  /*Label*/
+  //private JLabel labelPocition;
   /*oooooooooooooooooooooooooooooooooo*/  
   //Clase pincipal
   public static void main(String[] args){  
@@ -39,7 +41,7 @@ public class VentanaBitwise{
   
     //Variablede tipo JFrame    
     Ventana = new JFrame("Ventanita");
-    Ventana.setSize(550,550);
+    Ventana.setSize(850,550);
     Ventana.getContentPane().setBackground(Color.white);
     Ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);/*Finaliza el programa*/
     Ventana.setLayout(new GridBagLayout());
@@ -60,6 +62,7 @@ public class VentanaBitwise{
     Border BorderMostrarTxt = BorderFactory.createLineBorder(lightBlue, 2);
     MostrarTxt.setBorder(BorderMostrarTxt);
     
+    
     /*+++++++++++++++++++++++++++++++++++*/
     /*+++Declaramos todos los Botones+++*/
     /*+++++++++++++++++++++++++++++++++*/
@@ -76,6 +79,16 @@ public class VentanaBitwise{
     Apagar.setForeground(Color.white);
     Apagar.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
     Apagar.setBackground(lightBlue);
+    
+    /*+++++++++++++++++++++++++++++++++++*/
+    /*+++Declaramos todos los Labels +++*/
+    /*+++++++++++++++++++++++++++++++++*/
+    
+    //Crea JLabel
+    /*labelPocition = new JLabel("        32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01");
+    labelPocition.setFont(new Font("Arial", 0,7));
+    Border borde = BorderFactory.createLineBorder(Color.pink, 2);
+    labelPocition.setBorder(borde);*/
     
     /*-------Objeto de configuración del grid-------*/
     GridBagConstraints gridConf = new GridBagConstraints();
@@ -95,16 +108,33 @@ public class VentanaBitwise{
     gridConf.gridy = 0;
     gridConf.ipady = 20;
     gridConf.ipadx = 50;
+    gridConf.gridwidth = 1;
     gridConf.insets = new Insets(0,0,3,3); //padding
     
     //Añadir EncenderTxt a la ventana
     Ventana.add(EncenderTxt, gridConf);
     
-    /*Confi de pocicion MostrarTxt*/
+    /*Confi de MostrarTxt*/
     gridConf.gridx = 2;
     gridConf.gridy = 1;
+    gridConf.ipadx = 450;
+    gridConf.gridwidth = 2;
+    gridConf.insets = new Insets(0,0,3,3); //padding
     //Añadir MostrarTxt en la ventana
     Ventana.add(MostrarTxt,gridConf);
+    gridConf.gridwidth = 1;
+    
+    /*++++++++*/
+    /* Labels */
+    /*++++++++*/
+    
+    /*gridConf.gridx = 2;
+    gridConf.gridy = 2;
+    //gridConf.ipadx = 450;
+    gridConf.gridwidth = 3;
+    //Añadir labelPocition en la ventana
+    Ventana.add(labelPocition,gridConf);
+    gridConf.gridwidth = 1;*/
     
     /*+++++++*/
     /*Botones*/
@@ -151,23 +181,20 @@ public class VentanaBitwise{
     /*------------------------*/
   }
   
- // MostrarTxt.setText(Bits.ObtenerTodo());
- //Poli_A_Txt.setText(A.ObtenerTodo());
 
   
   public void Encender_Click(){
-    //MostrarTxt.setText(Bits.ObtenerTodo());
+    
     int Posicioncita = Integer.parseInt(EncenderTxt.getText());
     Bits.Encender(Posicioncita);
     String AuxPosition = String.valueOf(Bits.GetBit(Posicioncita));
     MostrarTxt.setText(Bits.ObtenerTodo());
-    //MostrarTxt.setText(AuxPosition);
   }
   
   public void Apagar_Click(){
+  
     int Posicioncita = Integer.parseInt(EncenderTxt.getText());
     Bits.Apagar(Posicioncita);
-    String AuxPosition = String.valueOf(Bits.GetBit(Posicioncita));
-    MostrarTxt.setText(AuxPosition);
+    MostrarTxt.setText(Bits.ObtenerTodo());
   }
 }
