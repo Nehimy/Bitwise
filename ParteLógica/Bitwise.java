@@ -29,6 +29,13 @@ public class Bitwise{
     return mask;
   }
   
+  public String ObtenerTodo(){
+    String cadena = "x = ";
+    for (int i = 20;i>=1;i--){
+      cadena = cadena + GetBit(i) + " ";
+    }
+    return cadena;
+  }
  // System.out.println("Funciona");
   
 

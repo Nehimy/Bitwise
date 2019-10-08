@@ -14,7 +14,7 @@ public class VentanaBitwise{
    /*-----------*/
   /* Atributos */
   /*-----------*/
-  
+  /*oooooooooooooooooooooooooooooooooo*/
   private Bitwise Bits = new Bitwise();
    
   /* Ventana */
@@ -26,7 +26,9 @@ public class VentanaBitwise{
   
   /*Button*/
   private JButton Encender;
-    
+  private JButton Apagar;
+  
+  /*oooooooooooooooooooooooooooooooooo*/  
   //Clase pincipal
   public static void main(String[] args){  
     new VentanaBitwise();
@@ -69,6 +71,12 @@ public class VentanaBitwise{
     Encender.setBorder(Border_Encender);
     Encender.setBackground(lightBlue);
     
+    //Declaramos botón Apagar
+    Apagar = new JButton("Apagar");
+    Apagar.setForeground(Color.white);
+    Apagar.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
+    Apagar.setBackground(lightBlue);
+    
     /*-------Objeto de configuración del grid-------*/
     GridBagConstraints gridConf = new GridBagConstraints();
     gridConf.fill = GridBagConstraints.HORIZONTAL;
@@ -82,14 +90,14 @@ public class VentanaBitwise{
     /*Caja de Texto*/
     /*+++++++++++++*/
     
-    /*Confi de pocicion ResultadoTxt*/
+    /*Confi de pocicion EncenderTxt*/
     gridConf.gridx = 2;
     gridConf.gridy = 0;
     gridConf.ipady = 20;
     gridConf.ipadx = 50;
     gridConf.insets = new Insets(0,0,3,3); //padding
     
-    //Añadir ResultadoTxt a la ventana
+    //Añadir EncenderTxt a la ventana
     Ventana.add(EncenderTxt, gridConf);
     
     /*Confi de pocicion MostrarTxt*/
@@ -113,6 +121,12 @@ public class VentanaBitwise{
     gridConf.gridy = 0;
     Ventana.add(Encender, gridConf);
     
+    //Confi de Apagar
+    //Ayadir Apagar en la ventana
+    gridConf.gridx = 0;
+    gridConf.gridy = 1;
+    Ventana.add(Apagar, gridConf);
+    
     /*****************************************/
     /*******Onclick De los Botoncitos*********/
     /*****************************************/
@@ -120,7 +134,14 @@ public class VentanaBitwise{
     //onclick Encender
     Encender.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
-        Encender_AClick();
+        Encender_Click();
+      }
+    });
+    
+    //onclick Apagar
+    Apagar.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e){
+        Apagar_Click();
       }
     });
     
@@ -130,9 +151,22 @@ public class VentanaBitwise{
     /*------------------------*/
   }
   
-  public void Encender_AClick(){
+ // MostrarTxt.setText(Bits.ObtenerTodo());
+ //Poli_A_Txt.setText(A.ObtenerTodo());
+
+  
+  public void Encender_Click(){
+    //MostrarTxt.setText(Bits.ObtenerTodo());
     int Posicioncita = Integer.parseInt(EncenderTxt.getText());
     Bits.Encender(Posicioncita);
+    String AuxPosition = String.valueOf(Bits.GetBit(Posicioncita));
+    MostrarTxt.setText(Bits.ObtenerTodo());
+    //MostrarTxt.setText(AuxPosition);
+  }
+  
+  public void Apagar_Click(){
+    int Posicioncita = Integer.parseInt(EncenderTxt.getText());
+    Bits.Apagar(Posicioncita);
     String AuxPosition = String.valueOf(Bits.GetBit(Posicioncita));
     MostrarTxt.setText(AuxPosition);
   }
